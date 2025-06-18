@@ -1,0 +1,29 @@
+name: Node.js CI
+
+on:
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Instalar dependências
+      run: npm install
+
+    - name: Build (compilar TypeScript)
+      run: npm run build
+
+    - name: Lint (simulado)
+      run: npm run lint
+
+    - name: Testes (simulado)
+      run: npm test
